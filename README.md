@@ -26,12 +26,12 @@ You can assign your own device_key which should be unique!
 The device tmeplates can be found under **config/scripts/templates/**. There are two directories. **commands** directory is for sending commands to the devices,
 **events** directory is for receiving and parsing data from the devices.
 
-##notifications.yml
+### notifications.yml
 When you want to trigger actions on changes you can write your own event handler. The example contains four examples.
 The first one is "washing mashine is done" event, the second one the "3d printer is done", the third one "the door is opened".
 Under the **keys** section you define the value(s) which trigger this event. The script is written in js and should be places under **config/scripts/notifications/**.
 
-##users.yml
+### users.yml
 This is the user file. To create a password you can use the password binary which can be found under **dist/hanectl_pwdgen** after compilation.
 Currently only ADMIn and USER groups are supported. The id should be unique!
 
@@ -86,7 +86,8 @@ WantedBy=multi-user.target
 
 > sudo systemctl start hanectl
 
-##Screenshots
+## Screenshots
+
 ![Screenshot1](doc/screenshots/hanectl_scr_1.png)
 ![Screenshot2](doc/screenshots/hanectl_scr_2.png)
 ![Screenshot3](doc/screenshots/hanectl_scr_3.png)
