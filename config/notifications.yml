@@ -1,0 +1,21 @@
+notifications:
+  - device_key: socket-washer
+    keys:
+      - power
+    caption: Waschmaschine
+    script: washer_power
+  - device_key: socket-ender
+    keys:
+      - power
+    caption: Ender 3
+    script: ender_power
+  - device_key: kontakt-haustuer
+    keys:
+      - active
+    caption: Door Sensor
+    script: door_sensor
+  - device_key: button-1
+    keys:
+      - click
+    caption: Button 1
+    script: button1

@@ -1,0 +1,38 @@
+.loader {
+  position: absolute;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.loader > span {
+  width: 10px;
+  height: 10px;
+  background: #80baf5;
+  border-radius: 50%;
+  margin: 5rem 0.5rem;
+  animation: bouncingLoader 0.6s infinite alternate;
+}
+
+.loader > span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.loader > span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bouncingLoader {
+  from {
+    opacity: 1;
+    transform: translate3d(0,0,0)  scale3d(1, 1, 1);
+  }
+  to {
+    opacity: 0.1;
+    transform: translate3d(0, -1rem, 0) scale3d(2, 2, 1);
+  }
+}

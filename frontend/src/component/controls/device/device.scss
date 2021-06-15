@@ -1,0 +1,82 @@
+@import 'src/scss/common';
+
+.device-panel {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+
+  .device {
+    display: flex;
+    align-items: center;
+    @include setSizeHeight(var(--device-icon-size));
+
+    .MuiSvgIcon-root {
+      @include setSize(100%);
+      color: var(--device-off-color);
+    }
+
+    cursor: pointer;
+  }
+
+  .device-on {
+    .MuiSvgIcon-root {
+      color: var(--device-on-color);
+    }
+  }
+}
+
+.device-state-panel {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding-bottom: 4px;
+
+  .device-state {
+    display: flex;
+    flex-flow: row nowrap;
+
+    .device-state-label {
+      flex-grow: 1;
+      text-align: left;
+      padding-right: 4px;
+      color: var(--state-label-color);
+
+      &:after {
+        content: ':'
+      }
+    }
+
+    .device-state-value {
+      white-space: nowrap;
+    }
+  }
+}
+
+
+.last-updated {
+  font-weight: normal;
+  color: var(--last-updated-color);
+}
+
+.expander {
+  position: absolute;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  //align-items: center;
+  cursor: pointer;
+  overflow: visible;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  border-radius: 50%;
+  @include setSize(var(--device-card-font-size));
+  background-color: var(--device-caption-background-color);
+
+  .MuiSvgIcon-root {
+    color: var(--device-caption-color);
+    //color: var(--expander-color);
+  }
+}

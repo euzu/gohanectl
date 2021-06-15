@@ -1,0 +1,59 @@
+{
+  "name": "hanectl",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "author": "euzu",
+  "scripts": {
+    "start": "react-scripts start",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build": "REACT_APP_STAGE=production PUBLIC_URL= react-scripts build",
+    "upgr": "yarn upgrade-interactive --latest"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@thomasloven/round-slider": "^0.5.2",
+    "axios": "^0.21.1",
+    "history": "^5.0.0",
+    "i18next": "^19.8.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-i18next": "^11.8.5",
+    "react-scripts": "^4.0.1",
+    "react-swipeable": "^6.0.1",
+    "rxjs": "^6.6.3",
+    "sprintf-js": "^1.1.2",
+    "typeface-roboto": "^1.1.13",
+    "web-vitals": "^0.2.4"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/sprintf-js": "^1.1.2",
+    "node-sass": "^4.14.1",
+    "typescript": "^3.9.7"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

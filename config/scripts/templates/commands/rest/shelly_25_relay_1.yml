@@ -1,0 +1,9 @@
+url: {{.Url}}
+handler_template: shelly_25_relay_1
+command_paths:
+  power:
+    power_on: /relay/1?turn=on
+    power_off: /relay/1?turn=off
+    power_toggle: /relay/0?turn=toggle
+  status:
+    path: /relay/1

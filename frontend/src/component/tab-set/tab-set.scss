@@ -1,0 +1,28 @@
+@import 'src/scss/common';
+
+.tabset-container {
+  display: flex;
+  flex-flow: column;
+}
+
+.tabset-panel {
+  display: flex;
+  flex-flow: column;
+}
+
+.tab-active {
+  //-webkit-transition:opacity 500ms ease-in;
+  //-moz-transition:opacity 500ms ease-in;
+  //-o-transition:opacity 500ms ease-in;
+  //transition:opacity 500ms ease-in;
+  //opacity: 1;
+}
+
+.tab-hidden {
+  display: none;
+  //visibility: hidden;
+  //overflow: hidden;
+  //height: 0;
+  //opacity: 0;
+}
+

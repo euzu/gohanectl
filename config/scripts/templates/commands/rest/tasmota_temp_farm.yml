@@ -1,0 +1,5 @@
+url: {{.Url}}
+handler_template: tasmota_temp_farm
+command_paths:
+  status:
+    path: '/cm?cmnd=Status 10'

@@ -1,0 +1,73 @@
+@import './variables';
+
+
+$on-color: #f3b006;
+$off-color: #5f5e5e;
+
+:root {
+  --logo-color: #0099DF;
+  --background-color: #282c34;
+  --text-color: #b1b1b1;
+  --page-color: #282c34;
+
+  --device-card-border-color: #{$off-color};
+  --device-card-border-radius: #{$device-border-radius};
+  --device-card-font-size: #{$device-font-size};
+  --device-card-padding: #{$device-card-padding};
+  --device-card-margin: #{$device-card-padding};
+
+  --device-caption-background-color: #454545;
+  --device-caption-color: #b1b1b1;
+  --device-caption-icon-color: #6a6a6a;
+  --device-caption-padding: #{$device-caption-padding};
+
+  --device-icon-size: #{$device-icon-size};
+
+  --device-off-color: #{$off-color};
+  --device-on-color: #{$on-color};
+
+  --state-label-color: #6f6e6e;
+
+  --thermostat-size: #{$thermostat-size};
+  --thermostat-temp-color: #{$on-color};
+  --thermostat-desired-color: #b1b1b1;
+  --thermostat-valve-color: #b1b1b1;
+
+  --button-hover-background-color: #3f51b5;
+  --button-hover-color: white;
+  --button-color: white;
+  --button-background-color: transparent;
+  --border-color: #{$off-color};
+  --border-hover-color: #ffffff;
+  --boder-focus-color: #6d83ff;
+
+  --round-slider-path-color: #6f6e6e;
+  --round-slider-bar-color: #{$on-color};
+  --round-slider-handle-color: #{$off-color};
+  --round-slider-path-width: 3;
+  --round-slider-linecap: round;
+  //--round-slider-low-handle-color: ;
+  //--round-slider-high-handle-color: ;
+  //--round-slider-handle-cursor: yellow;
+
+  --button-primary-background-color: #6d83ff;
+  --button-secondary-background-color: #ff5050;
+  --button-primary-hover-background-color: #0f28c7;
+  --button-secondary-hover-background-color: #b30000;
+
+  --ping-on-color: #{$on-color};
+  --ping-off-color: #{$off-color};
+
+  --mqtt-on-color: transparent;
+  --mqtt-off-color: red;
+
+  --timeout-indicator-color: red;
+
+  --expander-color: #363c47;
+  --last-updated-color: #b1b1b1;
+
+  --alert-color: #5F1914;
+  --alert-background-color: #FDECEA;
+
+  --tab-indicator: #6d83ff;
+}

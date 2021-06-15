@@ -1,0 +1,447 @@
+devices:
+  - type: light
+    device_key: licht-arbeitszimmer
+    caption: Arbeitszimmer
+    optimistic: true
+    room: Licht
+    mqtt:
+      template:
+        name: shelly_1
+        device_id: shelly1-78C64BFA0D2B
+    rest:
+      template:
+        name: shelly_1
+        url: http://192.168.178.52
+  - type: light
+    device_key: licht-arbeitszimmer2
+    caption: Arbeitszimmer 2
+    optimistic: true
+    room: Licht
+    mqtt:
+      template:
+        name: tasmota
+        device_id: light_az2
+    rest:
+      template:
+        name: tasmota
+        url: http://192.168.178.78
+  - type: light
+    device_key: licht-wz-led
+    caption: Wohnzimmer LED
+    optimistic: true
+    room: Licht
+    mqtt:
+      template:
+        name: shelly_25_relay_0
+        device_id: shellyswitch25-633ED1833D3A
+    rest:
+      template:
+        name: shelly_25_relay_0
+        url: http://192.168.178.87
+    supplemental:
+      - field: temperature
+        caption: 'Temperatur'
+        format: '%.1f'
+  - type: light
+    device_key: licht-wz-spot
+    caption: Wohnzimmer Spot
+    optimistic: true
+    room: Licht
+    mqtt:
+      template:
+        name: shelly_25_relay_1
+        device_id: shellyswitch25-283FAA83333A
+    rest:
+      template:
+        name: shelly_25_relay_1
+        url: http://192.168.178.87
+    supplemental:
+      - field: 'temperature'
+        caption: 'Temperatur'
+        format: '%.1f'
+  - type: socket
+    device_key: socket-wz-light
+    caption: Stehlampe WZ
+    optimistic: true
+    room: Licht
+    icon: Bulb
+    mqtt:
+      template:
+        name: tasmota
+        device_id: socket_wz_light
+    rest:
+      template:
+        name: tasmota
+        url: http://192.168.178.91
+  - type: light
+    device_key: licht-flur-eingang
+    caption: Flur Eingang
+    room: Licht
+    mqtt:
+      template:
+        name: shelly_1
+        device_id: shelly1-27333AA1ABED
+    rest:
+      template:
+        name: shelly_1
+        url: http://192.168.178.79
+  - type: light
+    device_key: licht-schlafzimmer
+    caption: Schlafzimmer
+    confirm: true
+    room: Licht
+    mqtt:
+      template:
+        name: shelly_1
+        device_id: shelly1-273FD391BD2F
+    rest:
+      template:
+        name: shelly_1
+        url: http://192.168.178.80
+    authorities:
+      - ADMIN
+  - type: socket
+    device_key: socket-wz-tv
+    caption: Wohnzimer TV
+    confirm: true
+    optimistic: true
+    room: Steckdose
+    mqtt:
+      template:
+        name: tasmota
+        device_id: socket_wz_tv
+    rest:
+      template:
+        name: tasmota
+        url: http://192.168.178.11
+  - type: socket
+    device_key: socket-kzl-tv
+    caption: KZ links TV
+    confirm: true
+    optimistic: true
+    room: Steckdose
+    groups:
+      - sockets-kz-links-tv
+    mqtt:
+      template:
+        name: tasmota
+        device_id: socket_kzl_tv
+    rest:
+      template:
+        name: tasmota
+        url: http://192.168.178.12
+  - type: socket
+    device_key: socket-kzl-tv-2
+    caption: KZ links TV 2
+    confirm: true
+    optimistic: true
+    room: Steckdose
+    groups:
+      - sockets-kz-links-tv
+    mqtt:
+      template:
+        name: bwshp13
+        device_id: 0x60a423fffef1345e
+    timeout: 300
+  - type: socket
+    device_key: socket-bwshp13-1
+    caption: bwshp13-1
+    confirm: true
+    optimistic: true
+    room: Power
+    mqtt:
+      template:
+        name: bwshp13
+        device_id: 0x60a423fffa2d3e43
+    timeout: 300
+  - type: socket
+    device_key: socket-bwshp13-2
+    caption: bwshp13-2
+    confirm: true
+    optimistic: true
+    room: Power
+    mqtt:
+      template:
+        name: bwshp13
+        device_id: 0x60a423fffa23d4f2
+    timeout: 300
+  - type: socket
+    device_key: socket-bwshp13-3
+    caption: bwshp13-3
+    confirm: true
+    optimistic: true
+    room: Power
+    mqtt:
+      template:
+        name: bwshp13
+        device_id: 0x60a423fff12d34f4
+    timeout: 300
+  - type: socket
+    device_key: socket-printer
+    caption: Drucker
+    confirm: true
+    optimistic: true
+    room: Steckdose
+    mqtt:
+      template:
+        name: tasmota
+        device_id: socket_printer
+    rest:
+      template:
+        name: tasmota
+        url: http://192.168.178.66
+  - type: socket
+    device_key: socket-washer
+    caption: Waschmaschine
+    confirm: true
+    optimistic: true
+    room: Steckdose
+    mqtt:
+      template:
+        name: tasmota
+        device_id: socket_washer
+    rest:
+      template:
+        name: tasmota
+        url: http://192.168.178.61
+    authorities:
+      - ADMIN
+  - type: socket
+    device_key: socket-ender
+    caption: Ender 3
+    confirm: true
+    optimistic: true
+    room: Steckdose
+    mqtt:
+      template:
+        name: tasmota
+        device_id: socket_ender
+    rest:
+      template:
+        name: tasmota
+        url: http://192.168.178.92
+  - type: roller-shutter
+    device_key: markise-terasse
+    caption: Markise
+    optimistic: true
+    invert:
+      position: true
+      state_color: false
+    confirm: true
+    mqtt:
+      template:
+        name: shelly_25_roller
+        device_id: shellyswitch25-35CCA8B088DE
+    rest:
+      template:
+        name: shelly_25_roller
+        url: http://192.168.178.81
+    supplemental:
+      - field: 'temperature'
+        caption: 'Temperatur'
+        format: '%.1f'
+  - type: sensor
+    device_key: kontakt-haustuer
+    caption: Haustür
+    mqtt:
+      listen_topics:
+        - topic: z2m/0x00124b002e342a34
+          handler_template: snzb04
+      status_topic: z2m/0x00124b002e342a34
+      status_payload: {"status":""}
+    expanded: true
+    supplemental:
+      - field: 'battery'
+        caption: 'Batterie'
+        format: '%s'
+      - field: 'battery_low'
+        caption: 'Batterie Status'
+        renderer: 'battery-low'
+      - field: 'voltage'
+        caption: 'Voltage'
+        format: '%.0f'
+    timeout: -1
+  - type: sensor
+    device_key: outdoor-temp
+    caption: Aussen Temp.
+    room: Heizung
+    mqtt:
+      template:
+        name: tasmota_temp_farm
+        device_id: temp_outdoor
+    rest:
+      template:
+        name: tasmota_temp_farm
+        url: http://192.168.178.6
+    expanded: true
+    icon: Thermometer
+    supplemental:
+      - field: 'ds18b20'
+        caption: 'Temperatur'
+        format: '%.1f'
+      - field: 'dht22'
+        caption: 'Temperatur'
+        format: '%.1f'
+      - field: 'humidity'
+        caption: 'Feuchtigkeit'
+        format: '%.1f'
+      - field: 'dewpoint'
+        caption: 'Taupunkt'
+        format: '%.1f'
+    timeout: -1
+  - type: sensor
+    device_key: sensor_temp_wz
+    caption: Temp. Wohn Z.
+    room: Heizung
+    mqtt:
+      template:
+        name: snzb02
+        device_id: 0x00124b002ae3f178
+    expanded: true
+    icon: Thermometer
+    supplemental:
+      - field: 'temperature'
+        caption: 'Temperatur'
+        format: '%.1f'
+      - field: 'humidity'
+        caption: 'Feuchtigkeit'
+        format: '%.1f'
+      - field: 'battery'
+        caption: 'Batterie'
+        format: '%.1f'
+      - field: 'voltage'
+        caption: 'Voltage'
+        format: '%.1f'
+    timeout: -1
+  - type: sensor
+    device_key: sensor_temp_az
+    caption: Temp. Arb. Z.
+    room: Heizung
+    mqtt:
+      template:
+        name: snzb02
+        device_id: 0x00124b0024adf568
+    expanded: true
+    icon: Thermometer
+    supplemental:
+      - field: 'temperature'
+        caption: 'Temperatur'
+        format: '%.1f'
+      - field: 'humidity'
+        caption: 'Feuchtigkeit'
+        format: '%.1f'
+      - field: 'battery'
+        caption: 'Batterie'
+        format: '%.1f'
+      - field: 'voltage'
+        caption: 'Voltage'
+        format: '%.1f'
+    timeout: -1
+  - type: thermostat
+    device_key: heizung-arbeitszimmer
+    caption: Arbeitszimmer
+    room: Heizung
+    mqtt:
+      template:
+        name: hm_thermostat
+        device_id: HeizungArbeitszimmer_ClimRT_tr
+    timeout: 1800
+  - type: thermostat
+    device_key: heizung-kinderzimmer
+    caption: Kinderzimmer
+    room: Heizung
+    mqtt:
+      template:
+        name: hm_thermostat
+        device_id: HeizungKinderzimmer_ClimRT_tr
+    timeout: 1800
+  - type: thermostat
+    device_key: heizung-schlafzimmer
+    caption: Schlafzimmer
+    room: Heizung
+    mqtt:
+      template:
+        name: hm_thermostat
+        device_id: HeizungSchlafzimmer_ClimRT_tr
+    timeout: 1800
+    authorities:
+      - ADMIN
+  - type: sensor
+    device_key: silver-temperature
+    caption: Silver Temperatur
+    mqtt:
+      template:
+        name: tasmota_am2301
+        device_id: sensor_silver
+    rest:
+      template:
+        name: tasmota_am2301
+        url: http://192.168.178.85
+    expanded: true
+    icon: Thermometer
+    supplemental:
+      - field: 'temperature'
+        caption: 'Temperatur'
+        format: '%.1f'
+      - field: 'humidity'
+        caption: 'Feuchtigkeit'
+        format: '%.1f'
+      - field: 'dewpoint'
+        caption: 'Taupunkt'
+        format: '%.1f'
+    timeout: -1
+  - type: light
+    device_key: kzl-general-power
+    caption: KZ links General
+    optimistic: true
+    room: Power
+    mqtt:
+      template:
+        name: shelly_1
+        device_id: shelly1-243FD231AD43
+    rest:
+      template:
+        name: shelly_1
+        url: http://192.168.178.16
+    icon: Power
+  - type: light
+    device_key: wz-general-power
+    caption: Wohnzimmer General
+    optimistic: true
+    room: Power
+    mqtt:
+      template:
+        name: shelly_1
+        device_id: shelly1-D8DB84D5DD123
+    rest:
+      template:
+        name: shelly_1
+        url: http://192.168.178.15
+    icon: Power
+  - type: sensor
+    device_key: button-1
+    caption: Button 1
+    mqtt:
+      template:
+        name: wxkg01lm
+        device_id: 0x00158d0002233445
+    icon: Button
+    timeout: -1
+  - type: sensor
+    device_key: button-2
+    caption: Button 2
+    mqtt:
+      template:
+        name: wxkg01lm
+        device_id: 0x00158d000def2341
+    icon: Button
+    timeout: -1
+  - type: sensor
+    device_key: button-3
+    caption: Button 3
+    mqtt:
+      template:
+        name: wxkg01lm
+        device_id: 0x00158d00012adef4
+    icon: Button
+    timeout: -1

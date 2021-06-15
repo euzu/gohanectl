@@ -1,0 +1,49 @@
+@import 'src/scss/common';
+
+.device-card {
+  flex: 1 1 0;
+  font-size: var(--device-card-font-size);
+  border: 1px solid var(--device-card-border-color);
+  border-radius: var(--device-card-border-radius);
+  margin: var(--device-card-margin);
+  min-width: 150px;
+  position: relative;
+
+  .device-caption {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    flex: 1 1 0;
+    background-color: var(--device-caption-background-color);
+    color: var(--device-caption-color);
+    border-top-left-radius: var(--device-card-border-radius);
+    border-top-right-radius: var(--device-card-border-radius);
+    white-space: nowrap;
+    padding: var(--device-caption-padding);
+    @include unselectable();
+
+    a {
+       text-decoration: none;
+       color: var(--device-caption-color);
+    }
+
+    .device-caption-icon {
+      .MuiSvgIcon-root {
+         color: var(--device-caption-icon-color);
+         @include setSize(0.6em);
+      }
+    }
+  }
+
+  .device-card-content {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    padding: var(--device-card-padding);
+  }
+}
+
+
+.hidden {
+  display: none;
+}

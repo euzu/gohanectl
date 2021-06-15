@@ -1,0 +1,72 @@
+log:
+  level: debug
+  file: 'hanectl.log'
+  console: true
+runas:
+working_dir: '/home/euzu/projects/gospace/src/gohanectl/'
+jwt:
+  secret: '01234567890123456789ABCDEFGHIJKLM'
+web:
+  listen:
+    host: 'localhost'
+    port: 8900
+  web_files: 'frontend/build'
+mqtt:
+  host: '192.168.178.2'
+  port: 1883
+  client_id: hanectl_dev_mqtt_client
+  websocket_port: 8083
+  username: ''
+  password: ''
+  topics:
+telegram:
+  enabled: false
+  bot_token: ''
+  chat_ids:
+    - ''
+config:
+  directory: config
+  command_token: '1234567'
+  scripts:
+    directory: scripts
+    default_lib: _lib
+    notifications: notifications
+    templates:
+      directory: templates
+      commands:
+        mqtt: commands/mqtt
+        rest: commands/rest
+      events:
+        mqtt: events/mqtt
+        rest: events/rest
+  devices: devices.yml
+  users: users.yml
+  notifications: notifications.yml
+  device_timeout: 60
+  room:
+    icon_only: true
+    definition:
+      - label: Licht
+        key: Bulb
+        color: '#FDD017'
+      - label: Steckdose
+        key: Socket
+        color: '#4EE2EC'
+      - label: Heizung
+        key: Thermometer
+        color: '#FFA62F'
+      - label: Power
+        key: Power
+        color: '#FF0000'
+      - label: Unsorted
+        key: Quote
+      - label: All
+        key: All
+        disabled: true
+database:
+  states:
+    name: hanectl_states.json
+    persist: true
+  settings:
+    name: hanectl_settings.json
+    persist: true

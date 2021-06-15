@@ -1,0 +1,32 @@
+{
+  "button": {
+    "yes": "Yes",
+    "no": "No"
+  },
+  "label": {
+    "light": "Switch",
+    "socket": "Socket",
+    "roller-shutter": "Roller Shutter",
+    "unsorted-room": "Unsorted",
+    "all-room": "All",
+    "voltage":"Voltage",
+    "current": "Current",
+    "power": "Power",
+    "apparent-power": "Apparent Power",
+    "reactive-power": "Reactive Power",
+    "power-factor": "Power Factor",
+    "yesterday": "Yesterday",
+    "today": "Today",
+    "total": "Total"
+  },
+  "text": {
+    "login-failed": "Login failed",
+    "default-toggle-tittle": "Toggle",
+    "turn-on-question": "Do you really want to switch on?",
+    "turn-off-question": "Do you really want to switch off?",
+    "open-question": "Do you really want to open?",
+    "close-question": "Do you really want to  close?",
+    "pause-question": "Do you really want to  stop?",
+    "position-question": "Do you really want to  set position?"
+  }
+}

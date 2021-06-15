@@ -1,0 +1,58 @@
+@import 'src/scss/common';
+
+.header {
+  height: 28px;
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 8px 10px 2px 10px;
+  justify-content: center;
+  align-items: center;
+
+  .header-logo {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    .header-logo-icon {
+      padding-right: 4px;
+      .MuiSvgIcon-root {
+        color: var(--logo-color);
+      }
+    }
+  }
+
+  .header-tools {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+  }
+
+  .header-icon {
+    .MuiSvgIcon-root {
+      color: var(--ping-off-color);
+    }
+  }
+
+  .ping-on {
+    .MuiSvgIcon-root {
+      color: var(--ping-on-color);
+    }
+  }
+
+  .ping-off {
+  }
+
+  .mqtt-on {
+    .MuiSvgIcon-root {
+      color: var(--mqtt-on-color)
+    }
+  }
+
+  .mqtt-off {
+    .MuiSvgIcon-root {
+      color: var(--mqtt-off-color);
+    }
+  }
+}

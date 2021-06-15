@@ -1,0 +1,11 @@
+.devices-container {
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+  align-items: stretch;
+}
+.devices-panel {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}

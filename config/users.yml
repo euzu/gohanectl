@@ -1,0 +1,8 @@
+users:
+  - id: 1
+    username: euzu
+    password: $2a$14$wX4L7UQtGNWp2NAH8Qw.Id3MxY3otUjDWdepHa3r0aG8G32/sdDqi
+    authorities:
+      - ADMIN
+      - USER
+    enabled: true

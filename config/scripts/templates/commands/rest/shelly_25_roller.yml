@@ -1,0 +1,12 @@
+url: {{.Url}}
+handler_template: shelly_25_roller
+command_paths:
+  power:
+    power_on: '/roller/0?go=close&duration=0'
+    power_off: '/roller/0?go=open&duration=0'
+  status:
+    path: /status
+  position:
+    path: '/roller/0?go=to_pos&roller_pos=%{position}.0f'
+  pause:
+    path: '/roller/0?go=stop&duration=0'

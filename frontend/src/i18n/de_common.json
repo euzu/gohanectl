@@ -1,0 +1,32 @@
+{
+  "button": {
+    "yes": "Ja",
+    "no": "Nein"
+  },
+  "label": {
+    "light": "Schalter",
+    "socket": "Steckdose",
+    "roller-shutter": "Rolladen/Marquise",
+    "unsorted-room": "Unsortiert",
+    "all-room": "Alle",
+    "voltage":"Voltage",
+    "current": "Current",
+    "power": "Power",
+    "apparent-power": "Apparent Power",
+    "reactive-power": "Reactive Power",
+    "power-factor": "Power Factor",
+    "yesterday": "Yesterday",
+    "today": "Today",
+    "total": "Total"
+},
+  "text": {
+    "login-failed": "Login fehlgeschlagen",
+    "default-toggle-tittle": "Umschalten",
+    "turn-on-question": "Wollen Sie wirklich einschalten?",
+    "turn-off-question": "Wollen Sie wirklich ausschalten?",
+    "open-question": "Wollen Sie wirklich öffnen?",
+    "close-question": "Wollen Sie wirklich schliessen?",
+    "pause-question": "Wollen Sie wirklich stoppen?",
+    "position-question": "Wollen Sie wirklich die Position setzen?"
+  }
+}

@@ -1,0 +1,3 @@
+listen_topics:
+  - topic: z2m/{{.DeviceID}}
+    handler_template: wxkg01lm

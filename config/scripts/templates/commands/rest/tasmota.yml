@@ -1,0 +1,9 @@
+url: {{.Url}}
+handler_template: tasmota
+command_paths:
+  power:
+    power_on: '/cm?cmnd=Power On'
+    power_off: '/cm?cmnd=Power Off'
+    power_toggle: '/cm?cmnd=Power Toggle'
+  status:
+    path: '/cm?cmnd=Status 0'

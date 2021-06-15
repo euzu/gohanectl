@@ -1,0 +1,104 @@
+@import 'theme';
+
+.MuiButton-label {
+  white-space: nowrap;
+}
+
+.MuiFormLabel-root {
+  color: var(--text-color) !important;
+}
+
+.MuiInputLabel-shrink {
+  background-color: var(--page-color) !important;
+}
+
+.MuiButton-root {
+  text-transform: none !important;
+  color: var(--button-color) !important;
+}
+
+.MuiInputBase-input {
+  color: var(--text-color) !important;
+}
+
+
+.MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-color) !important;
+  &:hover {
+    border-color: var(--border-hover-color) !important;
+  }
+}
+
+.Mui-focused {
+  .MuiOutlinedInput-notchedOutline {
+    border-color: var(--boder-focus-color) !important;
+  }
+}
+
+.MuiDialogActions-root {
+  .MuiButton-root {
+    background-color: var(--background-color);
+    &:hover {
+      background-color: var(--text-color);
+    }
+  }
+
+  .MuiButton-textPrimary {
+    background-color: transparent;
+    .MuiButton-label {
+      color: var(--button-primary-background-color)  !important;
+      &:hover {
+        color: var(--button-primary-hover-background-color)  !important;
+      }
+    }
+  }
+
+  .MuiButton-textSecondary {
+    background-color: transparent;
+    .MuiButton-label {
+      color: var(--button-secondary-background-color) !important;
+      &:hover {
+        color: var(--button-secondary-hover-background-color) !important;
+      }
+    }
+  }
+
+}
+
+.MuiPaper-root {
+  background-color:  var(--background-color) !important;
+  color: var(--text-color) !important;
+}
+.MuiDialogContentText-root {
+  color: var(--text-color) !important;
+}
+
+.MuiTab-root {
+  text-transform: none !important;
+  padding: 2px !important;
+  height: 1.1rem !important;
+  min-height: 1.1rem !important;
+}
+
+.MuiTabs-root {
+  padding: 4px 0;
+  min-height:1.5rem !important;
+}
+
+.MuiTabs-indicator {
+  background-color: var(--tab-indicator) !important;
+}
+
+.MuiTab-wrapper {
+  flex-direction: row !important;
+  .room-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .MuiSvgIcon-root {
+      margin: 0 !important;
+      max-height: 1.2rem !important;
+      flex: 1;
+    }
+  }
+}

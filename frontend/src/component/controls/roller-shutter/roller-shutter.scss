@@ -1,0 +1,31 @@
+@import 'src/scss/common';
+
+.roller-shutter-buttons {
+  display: flex;
+  flex-flow: row nowrap;
+
+  .roller-shutter-icon {
+    cursor: pointer;
+
+    &:not(last-child) {
+      margin-right: 4px;
+    }
+
+    &:hover {
+      color: var(--button-hover-background-color);
+    }
+
+    &:active:after {
+      color: red;
+    }
+  }
+}
+
+.roller-shutter-slider {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  padding: 0 8px;
+  min-width: 150px;
+  max-width: 200px;
+}

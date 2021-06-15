@@ -1,0 +1,25 @@
+@import 'src/scss/common';
+
+@include animationClass(fade-in, "fadeIn ease 10s");
+
+@include keyframes(fadeIn) {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+.timeout-indicator-container {
+  @include setSize(0);
+  overflow: visible;
+  .timeout-indicator {
+    @include setSize(8px);
+    border-radius: 50%;
+    background-color: var(--timeout-indicator-color);
+    top: 20px;
+    left: 20px;
+  }
+}
+

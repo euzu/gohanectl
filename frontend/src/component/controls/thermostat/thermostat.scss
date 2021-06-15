@@ -1,0 +1,66 @@
+@import 'src/scss/common';
+
+.thermostat-timeout {
+  > * {
+    color: var(--text-color) !important;
+  }
+}
+
+.thermostat-unit,
+.thermostat-value {
+  @include unselectable();
+}
+
+.thermostat-panel {
+  font-weight: bold;
+
+  .thermostat {
+    @include setSizeWidth(var(--thermostat-size));
+    @include setSizeHeight(var(--device-icon-size));
+    padding: 8px;
+  }
+
+  .thermostat-row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .thermostat-temp {
+    color: var(--thermostat-temp-color);
+
+    .thermostat-value {
+      font-weight: bold;
+      font-size: 1.8rem;
+    }
+
+    .thermostat-unit {
+    }
+  }
+
+  .thermostat-desired {
+    transform: translate3d(0, -40px, 0);
+    color: var(--thermostat-desired-color);
+
+    .thermostat-value {
+      font-size: 1.5rem;
+    }
+
+  }
+
+  .thermostat-valve {
+    color: var(--thermostat-valve-color);
+
+    .thermostat-icon {
+      .MuiSvgIcon-root {
+        height: 1.1rem;
+      }
+      margin-right: 3px;
+    }
+
+    .thermostat-value {
+      font-size: 1.5rem;
+    }
+  }
+}

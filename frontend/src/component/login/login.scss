@@ -1,0 +1,28 @@
+.login {
+  padding: 40px;
+  .login-container {
+    padding: 20px 40px 20px 40px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--page-color);
+  }
+}
+
+.alert {
+  color: var(--alert-color);
+  background-color: var(--alert-background-color);
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 1rem;
+  align-items: center;
+  padding: 4px 10px;
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  .alert-icon {
+    margin-right: 10px;
+  }
+}
+
+.alert-hidden {
+  display: none;
+}
