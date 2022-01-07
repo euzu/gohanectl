@@ -1,6 +1,5 @@
 import config from '../config';
 import {BehaviorSubject, Observable} from "rxjs";
-import * as path from "path";
 import axios from "axios";
 
 const KEY_AUTH_TOKEN = 'auth-token';
@@ -86,10 +85,6 @@ export class DefaultApiService implements ApiService {
 
     protected getUrl(query: string, url?: string) {
         return (url ? url : this.baseUrl) + query;
-    }
-
-    pathCombine(...args: string[]): string {
-        return path.join(...args);
     }
 
     get<T>(query: string, url?: string): Observable<T> {

@@ -2,14 +2,12 @@ package service
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/rs/zerolog/log"
 	"gohanectl/hanectl/config"
 	"gohanectl/hanectl/model"
 	"gohanectl/hanectl/utils"
 	"io/ioutil"
 	"os"
-	"reflect"
 	"sync"
 )
 
@@ -24,22 +22,10 @@ type SharedMemory struct {
 	config    config.IConfiguration
 }
 
-func compareValues(v1 interface{}, v2 interface{}) bool {
-	t1 := reflect.TypeOf(v1)
-	t2 := reflect.TypeOf(v2)
-	if t1 != t2 {
-		return fmt.Sprintf("%v", v1) != fmt.Sprintf("%v", v2)
-	} else {
-		return v1 != v2
-	}
-}
-
 func triggerValueChange(deviceKey string, key string, newValue interface{}, oldValue interface{}) {
-	if compareValues(newValue, oldValue) {
-		log.Debug().Msgf("Triggered %s.%s: newValue %v != %v oldValue", deviceKey, key, newValue, oldValue)
-		if notificationCallback != nil {
-			notificationCallback(deviceKey, key, newValue, oldValue)
-		}
+	log.Debug().Msgf("Triggered %s.%s: newValue=%v, oldValue=%v", deviceKey, key, newValue, oldValue)
+	if notificationCallback != nil {
+		notificationCallback(deviceKey, key, newValue, oldValue)
 	}
 }
 
@@ -85,11 +71,10 @@ func (s *SharedMemory) setMem(deviceKey string, key string, value interface{}, t
 		s.sharedMem[deviceKey] = mem
 	}
 	if trigger {
-		if oldValue, exists := mem[key]; exists {
-			if oldValue != value {
-				go triggerValueChange(deviceKey, key, value, oldValue)
-			}
-		}
+		var oldValue, _ = mem[key]
+		//if oldValue, exists := mem[key]; exists {
+			go triggerValueChange(deviceKey, key, value, oldValue)
+		//}
 	}
 	mem[key] = value
 	mutex.Unlock()

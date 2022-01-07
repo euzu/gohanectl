@@ -7,7 +7,8 @@
     if (payload) {
         _.setSharedMemNonNull(deviceKey, 'wifi_signal', payload['linkquality']);
         _.setSharedMemNonNull(deviceKey, 'battery', payload['battery']);
-        _.setSharedMemNonNull(deviceKey, 'click', payload['click']);
+        //_.setSharedMemNonNull(deviceKey, 'click', payload['click']);
+        _.setSharedMemNonNull(deviceKey, 'action', payload['action']);
         _.setSharedMemNonNull(deviceKey, 'voltage', payload['voltage']);
     } else {
         _.log.error(deviceKey + ' payload not found');

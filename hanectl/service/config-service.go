@@ -12,11 +12,11 @@ type ConfigService struct {
 	serverStatus *model.ServerStatus
 }
 
-func (c ConfigService) GetServerStatus() (*model.ServerStatus, error) {
+func (c *ConfigService) GetServerStatus() (*model.ServerStatus, error) {
 	return c.serverStatus, nil
 }
 
-func (c ConfigService) GetRoomsConfig() (model.Dictionary, error) {
+func (c *ConfigService) GetRoomsConfig() (model.Dictionary, error) {
 	cfg := c.config.GetMap(config.Room)
 	if cfg == nil {
 		return make(model.Dictionary), nil
@@ -25,11 +25,11 @@ func (c ConfigService) GetRoomsConfig() (model.Dictionary, error) {
 	return utils.MapToStringKey(result), nil
 }
 
-func (c ConfigService) SetWebsocketStatus(connected bool) {
+func (c *ConfigService) SetWebsocketStatus(connected bool) {
 	c.serverStatus.Websocket = connected
 }
 
-func (c ConfigService) SetMqttStatus(connectionStatus int) {
+func (c *ConfigService) SetMqttStatus(connectionStatus int) {
 	c.serverStatus.Mqtt = connectionStatus
 }
 

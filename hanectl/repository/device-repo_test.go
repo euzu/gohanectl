@@ -68,9 +68,9 @@ func TestGetDevice(t *testing.T) {
 	assert.Equal(t, device.Optimistic, true)
 	assert.Equal(t, device.Room, "Licht")
 	assert.Equal(t, device.Mqtt.Template.Name, "shelly_1")
-	assert.Equal(t, device.Mqtt.Template.DeviceID, "shelly1-56C64EFA34AD")
+	assert.Equal(t, device.Mqtt.Template.DeviceID, "shelly1-68C63AFA0C2B")
 	assert.Equal(t, device.Rest.Template.Name, "shelly_1")
-	assert.Equal(t, device.Rest.Template.Url, "http://192.168.178.52")
+	assert.Equal(t, device.Rest.Template.Url, "http://192.168.9.52")
 
 	device, err2 = repo.GetDevice("unknown")
 	assert.Errorf(t, err2, "cant find device with key unknown")

@@ -5,14 +5,14 @@ log:
 runas:
 working_dir: '/home/euzu/projects/gospace/src/gohanectl/'
 jwt:
-  secret: '01234567890123456789ABCDEFGHIJKLM'
+  secret: '12345678901234567890123456789012'
 web:
   listen:
     host: 'localhost'
     port: 8900
   web_files: 'frontend/build'
 mqtt:
-  host: '192.168.178.2'
+  host: '192.168.9.160'
   port: 1883
   client_id: hanectl_dev_mqtt_client
   websocket_port: 8083

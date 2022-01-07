@@ -1,8 +1,9 @@
 (function () {
-    if (_.getParamKey() === "click") {
+    var key = _.getParamKey();
+    if (key === "action") {
         var value = _.getParamNewValue();
         if (value === 'single') {
-            _.sendMqtt('cmnd/light_wz/Power', "toggle");
+            _.sendMqtt('z2m/socket_pc/set', '{"state": "on"}');
         } else if(value === 'double') {
         } else if(value === 'triple') {
         } else if(value === 'quadruple') {

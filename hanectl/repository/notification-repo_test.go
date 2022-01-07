@@ -50,7 +50,7 @@ func TestGetNotifications(t *testing.T) {
 	assert.True(t, len(notifications) > 0)
 
 	assert.Equal(t, notifications[0].Caption, "Waschmaschine")
-	assert.Equal(t, notifications[0].Template, "washer_power")
+	assert.Equal(t, notifications[0].Script, "washer_power")
 
 
 	notifications, err = repo.GetNotifications("socket-washer", "unknown")

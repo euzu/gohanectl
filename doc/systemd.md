@@ -1,9 +1,5 @@
 ## Systemd
 
-### create user
-create user and group hanectl if you want to run it with own user, otherwise 
-change the user and group in the service file
-
 ### create this file under /lib/systemd/system/hanectl.service
 
 ```
@@ -13,8 +9,8 @@ After=network.target
 
 [Service]
 Type=simple
-User=hanectl 
-Group=hanectl 
+User=polaris 
+Group=polaris 
 
 #RuntimeDirectory=hanectl
 #LogsDirectory=hanectl

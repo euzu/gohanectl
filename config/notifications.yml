@@ -1,21 +1,31 @@
 notifications:
   - device_key: socket-washer
+    trigger: change
     keys:
       - power
     caption: Waschmaschine
     script: washer_power
   - device_key: socket-ender
+    type: change
     keys:
       - power
     caption: Ender 3
     script: ender_power
   - device_key: kontakt-haustuer
+    trigger: event
     keys:
       - active
     caption: Door Sensor
     script: door_sensor
-  - device_key: button-1
+  - device_key: btn_pc
+    trigger: event
     keys:
-      - click
-    caption: Button 1
-    script: button1
+      - action
+    caption: Button PC
+    script: btn_pc
+  - device_key: btn_wz
+    trigger: event
+    keys:
+      - action
+    caption: Button WZ
+    script: btn_wz

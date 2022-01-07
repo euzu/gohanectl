@@ -7,8 +7,8 @@ const dev = {
     api: {
         wsUrl: 'ws://localhost:8900/ws',
         serverUrl: 'http://localhost:8900/api/v1/',
-        // wsUrl: 'ws://192.168.178.2:8085/ws',
-        // serverUrl: 'http://192.168.178.2:8085/api/v1/',
+        // wsUrl: 'ws://192.168.9.160:8085/ws',
+        // serverUrl: 'http://192.168.9.160:8085/api/v1/',
     }
 };
 

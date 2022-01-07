@@ -16,8 +16,14 @@ export default function Authenticator(params: AuthenticatorParams) {
     const [children, setChildren] = useState(null);
 
     useEffect(() => {
-        const sub = services.auth().authenticated().subscribe({next: noop,error: noop, complete:() => setProgress(val => false)});
-        return () => sub.unsubscribe();
+            const sub = services.auth().authenticated().subscribe({
+                next: noop,
+                error: noop,
+                complete: () => {
+                    setProgress(val => false);
+                }
+            });
+        return sub.unsubscribe();
     }, [services]);
 
     useEffect(() => {

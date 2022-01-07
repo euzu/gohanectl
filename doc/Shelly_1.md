@@ -25,11 +25,11 @@
   device_key: licht-flur
   caption: Flur
   listen_topics:
-    - topic: shellies/shelly1-363FDAFD562D
+    - topic: shellies/shelly1-483FDA91BCEF
       template: shelly_1
-  command_topic: shellies/shelly1-363FDAFD562D/relay/0/command
+  command_topic: shellies/shelly1-483FDA91BCEF/relay/0/command
   payload_on: 'on'
   payload_off: 'off'
-  status_topic: shellies/shelly1-363FDAFD562D/relay/0
+  status_topic: shellies/shelly1-483FDA91BCEF/relay/0
   status_payload: ''
 ```

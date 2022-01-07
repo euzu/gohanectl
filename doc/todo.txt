@@ -1,0 +1,9 @@
+- after restart with invalid token no update
+
+- Device ping display:
+   + add device timeout to devices.yml
+   + check last message from device for timeout
+   + display signal timeout per device
+
+- Ping Timeout should trigger polling !
+  after time x polling should start
