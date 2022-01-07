@@ -1,3 +1,4 @@
+---  # notifications
 notifications:
   - device_key: socket-washer
     trigger: change

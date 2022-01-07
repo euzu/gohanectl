@@ -1,3 +1,4 @@
+---  # devices
 devices:
   - type: light
     device_key: licht-arbeitszimmer

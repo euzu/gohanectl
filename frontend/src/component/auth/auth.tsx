@@ -13,7 +13,7 @@ export default function Authenticator(params: AuthenticatorParams) {
     const services = useServices();
     const [progress, setProgress] = useState(true);
     const [authenticated, setAuthenticated] = useState(false);
-    const [children, setChildren] = useState(null);
+    const [content, setContent] = useState(null);
 
     useEffect(() => {
             const sub = services.auth().authenticated().subscribe({
@@ -23,24 +23,25 @@ export default function Authenticator(params: AuthenticatorParams) {
                     setProgress(val => false);
                 }
             });
-        return sub.unsubscribe();
+        return () => sub.unsubscribe();
     }, [services]);
 
     useEffect(() => {
         const subs = services.auth().isAuthenticated().subscribe((val: boolean) => {
-            setAuthenticated(() => val);
-            if(val && children === null) {
-                setChildren(() => factory());
+            if(val && content === null) {
+                setContent(() => factory());
             }
+            setProgress(!val);
+            setAuthenticated(() => val);
         });
         return () => subs.unsubscribe();
-    }, [services, factory, children]);
+    }, [services, factory, content]);
 
     if (progress) {
          return <Spinner loading={progress}/>;
      }
     if (authenticated) {
-        return  children;
+        return  content;
     }
     return <Login/>
 }

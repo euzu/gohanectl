@@ -48,13 +48,13 @@ export default function Devices(params: DevicesProperties) {
     const setRoomsConfig = useMemo(() => (roomsCfg: IRoomConfig, devCfg: IDeviceConfig) => {
         const newRooms = DevicesUtils.createRooms(roomsCfg, devCfg);
         const tabsDef = DevicesUtils.createTabsetDef(newRooms);
-        let tabs: React.ReactNode;
+        let roomTabs: React.ReactNode;
         if (tabsDef && tabsDef.length) {
-            tabs =
+            roomTabs =
                 <TabSet ref={tabsetRef} index={tabIndex} tabs={tabsDef} rolling={true} onChange={changeTabIndex}/>
         }
         setRooms(() => newRooms)
-        setTabs(() => tabs);
+        setTabs(() => roomTabs);
     }, [changeTabIndex, tabIndex]);
 
 
@@ -116,6 +116,8 @@ export default function Devices(params: DevicesProperties) {
         onSwipedRight: () => !preventSwipe.current && tabsetRef.current?.setPrevTab(),
         ...DevicesUtils.swipeOptions,
     });
+
+    console.log('dev', devicesConfig?.devices);
 
     return <div className={"devices-container"} {...handlers}>
         <div className={"tabs-panel"}>{tabs}</div>

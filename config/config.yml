@@ -1,3 +1,4 @@
+---  # config
 log:
   level: debug
   file: 'hanectl.log'
