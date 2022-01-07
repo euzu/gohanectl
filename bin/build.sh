@@ -26,11 +26,13 @@ fi
 
 set -e
 print 'go build hanectl'
-env CGO_ENABLED=0 $GOROOT/bin/go build -a -ldflags '-s -w -extldflags "-static"' -o dist/hanectl${EXE_SUFFIX} hanectl/main.go
-#env CGO_ENABLED=1 $GOROOT/bin/go build -a -ldflags '-s -w -extldflags' -o dist/hanectl${EXE_SUFFIX} hanectl/main.go
+env CGO_ENABLED=0 $GOROOT/bin/go build -trimpath -a -ldflags '-s -w -extldflags "-static"' \
+  -o dist/hanectl${EXE_SUFFIX} hanectl/main.go
+#env CGO_ENABLED=1 $GOROOT/bin/go build -trimpath -a -ldflags '-s -w -extldflags' -o dist/hanectl${EXE_SUFFIX} hanectl/main.go
 
 print 'go build password'
-env CGO_ENABLED=0 $GOROOT/bin/go build -a -ldflags '-s -w -extldflags "-static"' -o dist/hanectl_pwdgen${EXE_SUFFIX} hanectl/cmd/password/main.go
+env CGO_ENABLED=0 $GOROOT/bin/go build -trimpath -a -ldflags '-s -w -extldflags "-static"' \
+  -o dist/hanectl_pwdgen${EXE_SUFFIX} hanectl/cmd/password/main.go
 
 
 print 'build dist'
