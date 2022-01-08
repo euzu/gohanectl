@@ -1,0 +1,21 @@
+### Auth
+POST http://{{host}}:{{port}}/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "test.secret"
+}
+
+> {%
+client.global.set("auth_token", response.body.token);
+%}
+
+###
+
+### Get State
+GET http://{{host}}:{{port}}/api/v1/devices/status
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+###

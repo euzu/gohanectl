@@ -117,8 +117,6 @@ export default function Devices(params: DevicesProperties) {
         ...DevicesUtils.swipeOptions,
     });
 
-    console.log('dev', devicesConfig?.devices);
-
     return <div className={"devices-container"} {...handlers}>
         <div className={"tabs-panel"}>{tabs}</div>
         <div className={"devices-panel"} {...handlers}>

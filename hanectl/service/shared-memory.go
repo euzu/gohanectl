@@ -64,6 +64,7 @@ func (s *SharedMemory) GetMemory() model.Dictionary {
 func (s *SharedMemory) setMem(deviceKey string, key string, value interface{}, trigger bool) {
 	var mem model.Dictionary
 	mutex.Lock()
+	defer mutex.Unlock()
 	if value, exist := s.sharedMem[deviceKey]; exist {
 		mem = value.(model.Dictionary)
 	} else {
@@ -73,11 +74,10 @@ func (s *SharedMemory) setMem(deviceKey string, key string, value interface{}, t
 	if trigger {
 		var oldValue, _ = mem[key]
 		//if oldValue, exists := mem[key]; exists {
-			go triggerValueChange(deviceKey, key, value, oldValue)
+		go triggerValueChange(deviceKey, key, value, oldValue)
 		//}
 	}
 	mem[key] = value
-	mutex.Unlock()
 }
 
 func (s *SharedMemory) SetMem(deviceKey string, key string, value interface{}) {

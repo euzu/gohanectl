@@ -31,6 +31,7 @@ func (j *JScriptVM) runHandlerScript(hs *HandlerScript, params model.Dictionary)
 	if err != nil {
 		log.Error().Msgf("Failed (cant set params) running handler script for %s: %v.", hs.device.DeviceKey, err)
 	} else {
+		j.sharedMemory.MarkAsUpdated(hs.device.DeviceKey)
 		var oldState string
 		if state := j.deviceService.DeviceState(hs.device.DeviceKey); state != nil {
 			if oState, err := json.Marshal(state); err == nil {
@@ -42,7 +43,6 @@ func (j *JScriptVM) runHandlerScript(hs *HandlerScript, params model.Dictionary)
 			log.Error().Msgf("Failed running handler script content %v", hs.script)
 		} else {
 			j.deviceService.DeviceUpdate(hs.device, oldState)
-			j.sharedMemory.MarkAsUpdated(hs.device.DeviceKey)
 		}
 	}
 }
