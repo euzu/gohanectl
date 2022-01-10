@@ -34,9 +34,7 @@ config:
     notifications: notifications
     templates:
       directory: templates
-      commands:
-        mqtt: commands/mqtt
-        rest: commands/rest
+      devices: devices
       events:
         mqtt: events/mqtt
         rest: events/rest

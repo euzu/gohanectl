@@ -19,10 +19,12 @@ func TestInitDevices(t *testing.T) {
 	devices := &model.Devices{
 		Devices: []model.Device{
 			{
-				Mqtt: model.DeviceMqtt{
-					ListenTopics: []model.DeviceTopic{
-						{
-							Topic: "topic",
+				Config: model.DeviceTemplate{
+					Mqtt: model.DeviceMqtt{
+						ListenTopics: []model.DeviceTopic{
+							{
+								Topic: "topic",
+							},
 						},
 					},
 				},
@@ -80,10 +82,12 @@ func TestInitDevicesNoMqtt(t *testing.T) {
 
 func TestMqttListenTopics(t *testing.T) {
 	dev := model.Device{
-		Mqtt: model.DeviceMqtt{
-			ListenTopics: []model.DeviceTopic{
-				{
-					Topic: "topic",
+		Config: model.DeviceTemplate{
+			Mqtt: model.DeviceMqtt{
+				ListenTopics: []model.DeviceTopic{
+					{
+						Topic: "topic",
+					},
 				},
 			},
 		},
@@ -91,21 +95,23 @@ func TestMqttListenTopics(t *testing.T) {
 	mqttServiceMock := new(mock_test.MqttServiceMock)
 	mqttServiceMock.On("Subscribe", "topic").Return(true)
 
-	mqttListenTopics(dev, mqttServiceMock)
+	mqttListenTopics(&dev, mqttServiceMock)
 }
 
 func TestMqttDeviceStatus(t *testing.T) {
 	dev := model.Device{
-		Mqtt: model.DeviceMqtt{
-			CommandTopics: model.Dictionary{
-				"status": model.Dictionary{
-					"topic":   "topic",
-					"payload": "",
+		Config: model.DeviceTemplate{
+			Mqtt: model.DeviceMqtt{
+				CommandTopics: model.Dictionary{
+					"status": model.Dictionary{
+						"topic":   "topic",
+						"payload": "",
+					},
 				},
-			},
-			ListenTopics: []model.DeviceTopic{
-				{
-					Topic: "topic",
+				ListenTopics: []model.DeviceTopic{
+					{
+						Topic: "topic",
+					},
 				},
 			},
 		},
@@ -113,5 +119,5 @@ func TestMqttDeviceStatus(t *testing.T) {
 	mqttServiceMock := new(mock_test.MqttServiceMock)
 	mqttServiceMock.On("Publish", "topic", "").Return(true)
 
-	mqttDeviceStatus(dev, mqttServiceMock)
+	mqttDeviceStatus(&dev, mqttServiceMock)
 }

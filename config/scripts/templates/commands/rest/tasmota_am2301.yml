@@ -1,5 +1,0 @@
-url: {{.Url}}
-handler_template: tasmota_am2301
-command_paths:
-  status:
-    path: '/cm?cmnd=Status 10'

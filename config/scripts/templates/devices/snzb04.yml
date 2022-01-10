@@ -1,0 +1,18 @@
+timeout: -1
+mqtt:
+  listen_topics:
+    - topic: z2m/{{.DeviceID}}
+      handler_template: snzb04
+  status_topic: z2m/{{.DeviceID}}
+  status_payload: { "status": "" }
+
+supplemental:
+  - field: 'battery'
+    caption: 'Batterie'
+    format: '%s'
+  - field: 'battery_low'
+    caption: 'Batterie Status'
+    renderer: 'battery-low'
+  - field: 'voltage'
+    caption: 'Voltage'
+    format: '%.0f'

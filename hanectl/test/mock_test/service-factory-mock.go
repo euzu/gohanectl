@@ -9,6 +9,10 @@ type ServiceFactoryMock struct {
 	mock.Mock
 }
 
+func (m *ServiceFactoryMock) GetDatabaseService() model.IDatabaseService {
+	panic("implement me")
+}
+
 func (m *ServiceFactoryMock) GetDeviceService() model.IDeviceService {
 	args := m.Called()
 	return args.Get(0).(model.IDeviceService)

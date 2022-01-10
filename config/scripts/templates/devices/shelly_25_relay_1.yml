@@ -1,0 +1,29 @@
+timeout: 60
+optimistic: true
+mqtt:
+  listen_topics:
+    - topic: shellies/{{.DeviceID}}/#
+      handler_template: shelly_25_relay_1
+  command_topics:
+    power:
+      topic: shellies/{{.DeviceID}}/relay/1/command
+      payload_on: 'on'
+      payload_off: 'off'
+      payload_toggle: 'toggle'
+    status:
+      topic: shellies/{{.DeviceID}}/relay/1
+      payload: ''
+rest:
+  url: {{.Url}}
+  handler_template: shelly_25_relay_1
+  command_paths:
+    power:
+      power_on: /relay/1?turn=on
+      power_off: /relay/1?turn=off
+      power_toggle: /relay/0?turn=toggle
+    status:
+      path: /relay/1
+supplemental:
+  - field: 'temperature'
+    caption: 'Temperatur'
+    format: '%.1f'

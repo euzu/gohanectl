@@ -1,7 +1,7 @@
 import IRoom, {IconConfig, IRoomConfig} from "../../model/room";
 import React from "react";
 import {getIconByName} from "../../icons/icons";
-import IDeviceConfig from "../../model/device-config";
+import IDeviceList from "../../model/device-config";
 import Utils from "../../utils/utils";
 import EventService, {EventTopic} from "../../service/event-service";
 
@@ -31,7 +31,7 @@ function getIcon(iconConfig: IconConfig): React.ReactElement {
     return null;
 }
 
-const createRooms = (roomConfig: IRoomConfig, devCfg: IDeviceConfig): IRoom[] => {
+const createRooms = (roomConfig: IRoomConfig, devCfg: IDeviceList): IRoom[] => {
     const result: IRoom[] = [];
     if (roomConfig && devCfg && roomConfig.definition && devCfg.devices) {
         const availableRooms: { [key: string]: boolean } = {[labelAll]: true};
@@ -81,7 +81,7 @@ function createTabsetDef(rooms: IRoom[]) {
     return null;
 }
 
-function getVisibilities(tabIndex: number, devicesConfig: IDeviceConfig, rooms: IRoom[]) {
+function getVisibilities(tabIndex: number, devicesConfig: IDeviceList, rooms: IRoom[]) {
     const room = rooms[tabIndex];
     const all = room.caption === DevicesUtils.labelAll;
     const unsorted = !all && room.caption === DevicesUtils.labelUnsorted;

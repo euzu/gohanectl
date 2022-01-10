@@ -1,8 +1,0 @@
-listen_topics:
-  - topic: tele/{{.DeviceID}}/SENSOR
-    handler_template: tasmota_temp_farm
-command_topics:
-  status:
-    topic: cmnd/{{.DeviceID}}/Status
-    payload: '10'
-

@@ -1,0 +1,15 @@
+timeout: 60
+optimistic: true
+mqtt:
+  listen_topics:
+    - topic: z2m/{{.DeviceID}}
+      handler_template: bwshp15
+  command_topics:
+    power:
+      topic: z2m/{{.DeviceID}}/set
+      payload_on: '{"state": "on"}'
+      payload_off: '{"state": "off"}'
+      payload_toggle: '{"state": "toggle"}'
+    status:
+      topic: cmnd/{{.DeviceID}}/get
+      payload: '{"state":""}'

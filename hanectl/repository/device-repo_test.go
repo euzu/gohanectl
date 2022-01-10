@@ -15,8 +15,7 @@ func TestGetDevices(t *testing.T) {
 	cfg.On("GetStr", config.ConfigDirectory, config.DefConfigDirectory).Return(devicesConfigDir)
 	cfg.On("GetStr", config.DeviceConfig, "").Return(devicesFile)
 	cfg.On("GetStr", config.ScriptsTemplatesDirectory, config.DefScriptsTemplatesDirectory).Return(config.DefScriptsTemplatesDirectory)
-	cfg.On("GetStr", config.ScriptsTemplatesCommandsMqttDirectory, config.DefScriptsTemplatesCommandsMqttDirectory).Return(config.DefScriptsTemplatesCommandsMqttDirectory)
-	cfg.On("GetStr", config.ScriptsTemplatesCommandsRestDirectory, config.DefScriptsTemplatesCommandsRestDirectory).Return(config.DefScriptsTemplatesCommandsRestDirectory)
+	cfg.On("GetStr", config.ScriptsTemplatesDevicesDirectory, config.DefScriptsTemplatesDevicesDirectory).Return(config.DefScriptsTemplatesDevicesDirectory)
 	cfg.On("GetStr", config.ScriptsDirectory, config.DefScriptsDirectory).Return(config.DefScriptsDirectory)
 	cfg.On("GetInt", config.DeviceTimeout, config.DefDeviceTimeout).Return(config.DefDeviceTimeout)
 
@@ -33,8 +32,7 @@ func TestReloadDevices(t *testing.T) {
 	cfg.On("GetStr", config.ConfigDirectory, config.DefConfigDirectory).Return(devicesConfigDir)
 	cfg.On("GetStr", config.DeviceConfig, "").Return(devicesFile)
 	cfg.On("GetStr", config.ScriptsTemplatesDirectory, config.DefScriptsTemplatesDirectory).Return(config.DefScriptsTemplatesDirectory)
-	cfg.On("GetStr", config.ScriptsTemplatesCommandsMqttDirectory, config.DefScriptsTemplatesCommandsMqttDirectory).Return(config.DefScriptsTemplatesCommandsMqttDirectory)
-	cfg.On("GetStr", config.ScriptsTemplatesCommandsRestDirectory, config.DefScriptsTemplatesCommandsRestDirectory).Return(config.DefScriptsTemplatesCommandsRestDirectory)
+	cfg.On("GetStr", config.ScriptsTemplatesDevicesDirectory, config.DefScriptsTemplatesDevicesDirectory).Return(config.DefScriptsTemplatesDevicesDirectory)
 	cfg.On("GetStr", config.ScriptsDirectory, config.DefScriptsDirectory).Return(config.DefScriptsDirectory)
 	cfg.On("GetInt", config.DeviceTimeout, config.DefDeviceTimeout).Return(config.DefDeviceTimeout)
 
@@ -50,8 +48,7 @@ func TestGetDevice(t *testing.T) {
 	cfg.On("GetStr", config.ConfigDirectory, config.DefConfigDirectory).Return(devicesConfigDir)
 	cfg.On("GetStr", config.DeviceConfig, "").Return(devicesFile)
 	cfg.On("GetStr", config.ScriptsTemplatesDirectory, config.DefScriptsTemplatesDirectory).Return(config.DefScriptsTemplatesDirectory)
-	cfg.On("GetStr", config.ScriptsTemplatesCommandsMqttDirectory, config.DefScriptsTemplatesCommandsMqttDirectory).Return(config.DefScriptsTemplatesCommandsMqttDirectory)
-	cfg.On("GetStr", config.ScriptsTemplatesCommandsRestDirectory, config.DefScriptsTemplatesCommandsRestDirectory).Return(config.DefScriptsTemplatesCommandsRestDirectory)
+	cfg.On("GetStr", config.ScriptsTemplatesDevicesDirectory, config.DefScriptsTemplatesDevicesDirectory).Return(config.DefScriptsTemplatesDevicesDirectory)
 	cfg.On("GetStr", config.ScriptsDirectory, config.DefScriptsDirectory).Return(config.DefScriptsDirectory)
 	cfg.On("GetInt", config.DeviceTimeout, config.DefDeviceTimeout).Return(config.DefDeviceTimeout)
 
@@ -67,10 +64,9 @@ func TestGetDevice(t *testing.T) {
 	assert.Equal(t, device.Caption, "Arbeitszimmer")
 	assert.Equal(t, device.Optimistic, true)
 	assert.Equal(t, device.Room, "Licht")
-	assert.Equal(t, device.Mqtt.Template.Name, "shelly_1")
-	assert.Equal(t, device.Mqtt.Template.DeviceID, "shelly1-68C63AFA0C2B")
-	assert.Equal(t, device.Rest.Template.Name, "shelly_1")
-	assert.Equal(t, device.Rest.Template.Url, "http://192.168.9.52")
+	assert.Equal(t, device.Template, "shelly_1")
+	assert.Equal(t, device.Mqtt.DeviceID, "shelly1-68C63AFA0C2B")
+	assert.Equal(t, device.Rest.Url, "http://192.168.9.52")
 
 	device, err2 = repo.GetDevice("unknown")
 	assert.Errorf(t, err2, "cant find device with key unknown")

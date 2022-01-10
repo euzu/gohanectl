@@ -15,7 +15,7 @@ import (
 const YmlSuffix = ".yml"
 const JsonSuffix = ".json"
 
-func getCommandsTemplatePath(cfg config.IConfiguration) string {
+func getDevicesTemplatePath(cfg config.IConfiguration) string {
 	return path.Join(
 		cfg.GetStr(config.ConfigDirectory, config.DefConfigDirectory),
 		cfg.GetStr(config.ScriptsDirectory, config.DefScriptsDirectory),
@@ -25,7 +25,7 @@ func getCommandsTemplatePath(cfg config.IConfiguration) string {
 func getTemplateNestedPath(cfg config.IConfiguration, teplateName string, configKey config.ConfigKey, defValue string) (string, error) {
 	templateDir := cfg.GetStr(configKey, defValue)
 	if _, err := os.Stat(templateDir); err != nil {
-		templateDir = path.Join(getCommandsTemplatePath(cfg), templateDir)
+		templateDir = path.Join(getDevicesTemplatePath(cfg), templateDir)
 		if _, err := os.Stat(templateDir); err != nil {
 			log.Fatal().Msgf("Cant find device template directory %s", templateDir)
 			return "", errors.New("dir not found")
@@ -46,14 +46,9 @@ func getTemplateNestedPath(cfg config.IConfiguration, teplateName string, config
 	return "", errors.New("cant find template file")
 }
 
-func getDeviceMqttPath(cfg config.IConfiguration, templateName string) (string, error) {
-	return getTemplateNestedPath(cfg, templateName, config.ScriptsTemplatesCommandsMqttDirectory,
-		config.DefScriptsTemplatesCommandsMqttDirectory)
-}
-
-func getDeviceRestPath(cfg config.IConfiguration, templateName string) (string, error) {
-	return getTemplateNestedPath(cfg, templateName, config.ScriptsTemplatesCommandsRestDirectory,
-		config.DefScriptsTemplatesCommandsRestDirectory)
+func getDevicesConfigPath(cfg config.IConfiguration, templateName string) (string, error) {
+	return getTemplateNestedPath(cfg, templateName, config.ScriptsTemplatesDevicesDirectory,
+		config.DefScriptsTemplatesDevicesDirectory)
 }
 
 func getDeviceTemplateContent(templateFile string, model interface{}) ([]byte, error) {

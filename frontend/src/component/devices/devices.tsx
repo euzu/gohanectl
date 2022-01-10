@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo, useRef, useState} from "react";
 import "./devices.scss"
 import {useServices} from "../../provider/service-provider";
-import IDeviceConfig from "../../model/device-config";
+import IDeviceList from "../../model/device-config";
 import IRoom, {IRoomConfig} from '../../model/room';
 import {AppEvent, EventTopic} from "../../service/event-service";
 import {first} from "rxjs/operators";
@@ -31,7 +31,7 @@ interface DevicesProperties {
 export default function Devices(params: DevicesProperties) {
     const services = useServices();
     const [authenticated, setAuthenticated] = useState<boolean>(false);
-    const [devicesConfig, setDevicesConfig] = useState<IDeviceConfig>(null);
+    const [devicesConfig, setDevicesConfig] = useState<IDeviceList>(null);
     const [rooms, setRooms] = useState<IRoom[]>(null);
     const [tabIndex, setTabIndex] = useState<number>(loadTabIndex());
     const [tabs, setTabs] = useState<React.ReactNode>(null);
@@ -45,7 +45,7 @@ export default function Devices(params: DevicesProperties) {
         storeTabIndex(index);
     }, []);
 
-    const setRoomsConfig = useMemo(() => (roomsCfg: IRoomConfig, devCfg: IDeviceConfig) => {
+    const setRoomsConfig = useMemo(() => (roomsCfg: IRoomConfig, devCfg: IDeviceList) => {
         const newRooms = DevicesUtils.createRooms(roomsCfg, devCfg);
         const tabsDef = DevicesUtils.createTabsetDef(newRooms);
         let roomTabs: React.ReactNode;

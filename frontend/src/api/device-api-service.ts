@@ -1,6 +1,6 @@
 import {Observable} from "rxjs";
 import ApiService, {DefaultApiService} from "./api-service";
-import IDeviceConfig from "../model/device-config";
+import IDeviceList from "../model/device-config";
 import IDictionary from "../model/dictionary";
 import {first} from "rxjs/operators";
 
@@ -9,7 +9,7 @@ const DEVICE_STATES_API_PATH = 'devices/status'
 const DEVICE_API_PATH = 'device'
 
 export default interface DeviceApiService extends ApiService {
-    getDeviceConfig(): Observable<IDeviceConfig>;
+    getDeviceConfig(): Observable<IDeviceList>;
 
     getDeviceStates(): Observable<any>;
 
@@ -19,8 +19,8 @@ export default interface DeviceApiService extends ApiService {
 }
 
 export class DefaultDeviceApiService extends DefaultApiService implements DeviceApiService {
-    getDeviceConfig(): Observable<IDeviceConfig> {
-        return this.get<IDeviceConfig>(DEVICE_CONFIG_API_PATH);
+    getDeviceConfig(): Observable<IDeviceList> {
+        return this.get<IDeviceList>(DEVICE_CONFIG_API_PATH);
     }
 
     getDeviceStates(): Observable<any> {

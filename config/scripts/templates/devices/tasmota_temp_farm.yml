@@ -1,0 +1,28 @@
+timeout: -1
+mqtt:
+  listen_topics:
+    - topic: tele/{{.DeviceID}}/SENSOR
+      handler_template: tasmota_temp_farm
+  command_topics:
+    status:
+      topic: cmnd/{{.DeviceID}}/Status
+      payload: '10'
+rest:
+  url: {{.Url}}
+  handler_template: tasmota_temp_farm
+  command_paths:
+    status:
+      path: '/cm?cmnd=Status 10'
+supplemental:
+  - field: 'dht22'
+    caption: 'Temperatur'
+    format: '%.1f'
+  - field: 'ds18b20'
+    caption: 'Temperatur'
+    format: '%.1f'
+  - field: 'humidity'
+    caption: 'Feuchtigkeit'
+    format: '%.1f'
+  - field: 'dewpoint'
+    caption: 'Taupunkt'
+    format: '%.1f'

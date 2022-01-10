@@ -217,7 +217,7 @@ func mapDevice(entity model.Device) model.DeviceDto {
 		DeviceKey:    entity.DeviceKey,
 		Caption:      entity.Caption,
 		Confirm:      entity.Confirm,
-		Optimistic:   entity.Optimistic,
+		Optimistic:   entity.Optimistic.OrElse(false),
 		Url:          entity.Rest.Url,
 		Timeout:      entity.Timeout,
 		Invert:       entity.Invert,

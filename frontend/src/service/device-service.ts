@@ -1,6 +1,6 @@
 import {Observable, of} from "rxjs";
 import DeviceApiService, {DefaultDeviceApiService} from "../api/device-api-service";
-import IDeviceConfig from "../model/device-config";
+import IDeviceList from "../model/device-config";
 import IDevice from "../model/device";
 import IDictionary from "../model/dictionary";
 import Utils from "../utils/utils";
@@ -8,12 +8,12 @@ import {first} from "rxjs/operators";
 
 export default class DeviceService {
 
-    private deviceConfig: IDeviceConfig;
+    private deviceConfig: IDeviceList;
 
     constructor(private deviceApiService: DeviceApiService = new DefaultDeviceApiService()) {
     }
 
-    getDeviceConfig(): Observable<IDeviceConfig> {
+    getDeviceConfig(): Observable<IDeviceList> {
         if (Utils.isNil(this.deviceConfig)) {
             return new Observable((observer) => {
                 this.deviceApiService.getDeviceConfig().pipe(first()).subscribe({
