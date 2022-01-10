@@ -1,4 +1,5 @@
 timeout: -1
+icon: temperature
 mqtt:
   listen_topics:
     - topic: z2m/{{.DeviceID}}

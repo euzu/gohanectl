@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo, useRef, useState} from "react";
 import "./devices.scss"
 import {useServices} from "../../provider/service-provider";
-import IDeviceList from "../../model/device-config";
+import IDeviceList from "../../model/device-list";
 import IRoom, {IRoomConfig} from '../../model/room';
 import {AppEvent, EventTopic} from "../../service/event-service";
 import {first} from "rxjs/operators";

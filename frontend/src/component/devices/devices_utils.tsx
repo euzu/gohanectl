@@ -1,7 +1,7 @@
 import IRoom, {IconConfig, IRoomConfig} from "../../model/room";
 import React from "react";
 import {getIconByName} from "../../icons/icons";
-import IDeviceList from "../../model/device-config";
+import IDeviceList from "../../model/device-list";
 import Utils from "../../utils/utils";
 import EventService, {EventTopic} from "../../service/event-service";
 

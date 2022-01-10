@@ -1,6 +1,6 @@
 import {Observable} from "rxjs";
 import ApiService, {DefaultApiService} from "./api-service";
-import IDeviceList from "../model/device-config";
+import IDeviceList from "../model/device-list";
 import IDictionary from "../model/dictionary";
 import {first} from "rxjs/operators";
 

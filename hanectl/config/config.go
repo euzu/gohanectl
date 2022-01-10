@@ -45,8 +45,7 @@ const (
 
 	ScriptsTemplatesEventsMqttDirectory   = ConfigKey("config.scripts.templates.events.mqtt")
 	ScriptsTemplatesEventsRestDirectory   = ConfigKey("config.scripts.templates.events.rest")
-	ScriptsTemplatesCommandsMqttDirectory = ConfigKey("config.scripts.templates.commands.mqtt")
-	ScriptsTemplatesCommandsRestDirectory = ConfigKey("config.scripts.templates.commands.rest")
+	ScriptsTemplatesDevicesDirectory = ConfigKey("config.scripts.templates.devices")
 
 	ScriptsNotificationDirectory = ConfigKey("config.scripts.notifications")
 	ScriptsDefaultLib            = ConfigKey("config.scripts.default_lib")
@@ -86,8 +85,7 @@ const (
 	DefScriptsTemplatesDirectory             = "templates"
 	DefScriptsTemplatesEventsMqttDirectory   = "events/mqtt"
 	DefScriptsTemplatesEventsRestDirectory   = "events/rest"
-	DefScriptsTemplatesCommandsMqttDirectory = "commands/mqtt"
-	DefScriptsTemplatesCommandsRestDirectory = "commands/rest"
+	DefScriptsTemplatesDevicesDirectory      = "devices"
 
 	DefDatabaseStatesName    = "hanectl_states.db"
 	DefDatabaseStatesPersist = true
