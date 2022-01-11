@@ -23,7 +23,11 @@ func getParsedScriptTemplate(dev *model.Device, templateFile string) (string, er
 			if err := t.Execute(&tpl, dev); err != nil {
 				log.Error().Msgf("Failed to execute template: %s, err: %v", templateFile, err)
 			} else {
-				return tpl.String(), nil
+				var content = tpl.String()
+				if strings.Index(content, "(function () {")  < 0 {
+					content = fmt.Sprintf("(function () {%s})();", content)
+				}
+				return content, nil
 			}
 		}
 	}

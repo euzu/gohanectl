@@ -9,19 +9,12 @@ import (
 )
 
 type HandlerScript struct {
-	device *model.Device
-	script *otto.Script
+	device   *model.Device
+	script   *otto.Script
 	template string
 }
 
-
 var scriptMutex sync.RWMutex
-
-//func scriptFilename(s *otto.Script) string {
-//	v := reflect.ValueOf(*s)
-//	y := v.FieldByName("filename")
-//	return fmt.Sprint(y.Interface())
-//}
 
 func (j *JScriptVM) runHandlerScript(hs *HandlerScript, params model.Dictionary) {
 	scriptMutex.Lock()
