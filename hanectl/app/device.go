@@ -22,7 +22,7 @@ func initDevices(cfg config.IConfiguration, services model.IServiceFactory) {
 			mqttService := services.GetMqttService()
 			for i := range devices.Devices {
 				xDev := &devices.Devices[i]
-				mqttListenTopics(xDev, mqttService)
+				mqttSubscribeTopics(xDev, mqttService)
 				mqttDeviceStatus(xDev, mqttService)
 			}
 		} else {
@@ -33,17 +33,10 @@ func initDevices(cfg config.IConfiguration, services model.IServiceFactory) {
 	}
 }
 
-func mqttListenTopics(x *model.Device, mqttService model.IMqttService) {
+func mqttSubscribeTopics(x *model.Device, mqttService model.IMqttService) {
 	for _, t := range x.Mqtt.ListenTopics {
 		if t.Topic != "" {
-			topic := t.Topic
-			//if !strings.HasSuffix(t.Topic, "/") {
-			//	topic = fmt.Sprintf("%s/", topic)
-			//}
-			//if !strings.HasSuffix(t.Topic, "#") {
-			//	topic = fmt.Sprintf("%s#", topic)
-			//}
-			mqttService.Subscribe(topic)
+			mqttService.Subscribe(t.Topic)
 		}
 	}
 }

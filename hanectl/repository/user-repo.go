@@ -22,19 +22,15 @@ func (u *UserRepo) loadUsers() (*model.Users, error) {
 		log.Error().Msgf("Failed to read users file: %v", err)
 		return nil, errors.New("failed to read users file")
 	}
-	u.usersLock.Lock()
 	u.users = users
-	u.usersLock.Unlock()
 	return users, nil
 }
 
-func (u *UserRepo) ReloadUsers() error {
-	if _, err := u.loadUsers(); err == nil {
-		log.Info().Msg("Users reloaded")
-		return nil
-	} else {
-		return err
-	}
+func (u *UserRepo) Close() {
+	u.usersLock.Lock()
+	defer u.usersLock.Unlock()
+	u.users = nil
+	log.Info().Msg("User cleared")
 }
 
 func (u *UserRepo) FindByUsername(userName string) (*model.User, error) {
@@ -49,11 +45,14 @@ func (u *UserRepo) FindByUsername(userName string) (*model.User, error) {
 }
 
 func (u *UserRepo) GetUsers() (*model.Users, error) {
+	u.usersLock.RLock()
 	if u.users != nil {
-		u.usersLock.RLock()
-		defer u.usersLock.RUnlock()
+		u.usersLock.RUnlock()
 		return u.users, nil
 	}
+	u.usersLock.RUnlock()
+	u.usersLock.Lock()
+	defer u.usersLock.Unlock()
 	return u.loadUsers()
 }
 

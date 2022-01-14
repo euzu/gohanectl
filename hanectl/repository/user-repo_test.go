@@ -24,19 +24,6 @@ func TestGetAllUsers(t *testing.T) {
 	cfg.AssertExpectations(t)
 }
 
-func TestReloadUsers(t *testing.T) {
-
-	cfg := new(mock_test.ConfigurationRepoMock)
-	cfg.On("GetStr", config.ConfigDirectory, config.DefConfigDirectory).Return(usersConfigDir)
-	cfg.On("GetStr", config.UserConfig, "").Return(usersFile)
-
-	repo := NewUserRepo(cfg)
-	err := repo.ReloadUsers()
-	assert.Nil(t, err)
-
-	cfg.AssertExpectations(t)
-}
-
 func TestGetUsers(t *testing.T) {
 
 	cfg := new(mock_test.ConfigurationRepoMock)

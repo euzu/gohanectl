@@ -19,7 +19,6 @@ func (m *NotificationRepoMock) GetNotifications(deviceKey string, key string) ([
 	return args.Get(0).([]*model.Notification), args.Error(1)
 }
 
-func (m *NotificationRepoMock) ReloadNotifications() error {
-	args := m.Called()
-	return args.Error(0)
+func (m *NotificationRepoMock) Close() {
+	m.Called()
 }

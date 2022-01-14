@@ -264,8 +264,19 @@ func broadcastDeviceState(dev *model.Device, devState interface{}) {
 	}
 }
 
-func (d *DeviceService) ReloadDevices() error {
-	return d.deviceRepo.ReloadDevices()
+func (d *DeviceService) Close()  {
+	if devices, err := d.GetDevices(); err == nil {
+		mqttService := d.mqttService
+		for i := range devices.Devices {
+			xDev := &devices.Devices[i]
+			for _, t := range xDev.Mqtt.ListenTopics {
+				if t.Topic != "" {
+					mqttService.Unsubscribe(t.Topic)
+				}
+			}
+		}
+	}
+	d.deviceRepo.Close()
 }
 
 var doOnce sync.Once

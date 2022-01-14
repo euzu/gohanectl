@@ -26,20 +26,22 @@ type IDeviceService interface {
 	GetDevices() (*Devices, error)
 	GetDevicesDto(filter DeviceFilter) (*DevicesDto, error)
 	DeviceUpdate(dev *Device, oldState string)
-	ReloadDevices() error
+	Close()
 }
 
 type IMqttService interface {
 	SetClient(client mqtt.Client)
 	Publish(topic string, payload interface{}) bool
 	Subscribe(topic string) bool
+	Unsubscribe(topic string) bool
 	SetMessageHandler(handler MqttMessageHandler)
 	HandleMessage(topic string, payload []byte)
+	Close()
 }
 
 type INotificationService interface {
 	GetNotifications(deviceKey string, key string) ([]*Notification, error)
-	ReloadNotifications() error
+	Close()
 }
 
 type ITelegramBotAPI interface {
@@ -52,9 +54,9 @@ type ITelegramService interface {
 
 type IUserService interface {
 	FindByUsername(userName string) (*User, error)
-	ReloadUsers() error
     SaveSettings(userName string, settings *UserSettings) error
 	GetSettings(userName string) (*UserSettings, error)
+	Close()
 }
 
 type IRestService interface {

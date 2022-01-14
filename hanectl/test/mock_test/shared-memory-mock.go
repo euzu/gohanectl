@@ -40,6 +40,6 @@
 	 m.Called(notifyFunc)
  }
 
- func (m *SharedMemoryMock) FinalizeSharedMem() {
+ func (m *SharedMemoryMock) Persist() {
 	 m.Called()
  }

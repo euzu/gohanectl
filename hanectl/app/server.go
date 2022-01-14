@@ -43,11 +43,12 @@ func createListener(cfg config.IConfiguration) *net.Listener {
 	return &lhttp
 }
 
-func startServer(cfg config.IConfiguration, serviceFactory model.IServiceFactory) {
+func startServer(cfg config.IConfiguration, serviceFactory model.IServiceFactory) *net.Listener {
 	router := rest.Routes(cfg, serviceFactory)
 	websocket.StartWebSocket(router, serviceFactory.GetConfigService().SetWebsocketStatus)
 	startWebfileServer(cfg, router)
 	rest.PrintRoutes(router)
 	lhttp := createListener(cfg)
 	log.Fatal().Err(http.Serve(*lhttp, router))
+	return lhttp
 }

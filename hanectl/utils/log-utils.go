@@ -29,12 +29,19 @@ func getLogLevel(lvl *string) zerolog.Level {
 	}
 }
 
+var logFile *os.File
 var myHttpLogger *zerolog.Logger
 
 func InitLogger(logLevel *string, logFileName string, logConsole bool) {
 	log.Info().Msgf("Logging level: %s,  file: %s", getLogLevel(logLevel), logFileName)
 	zerolog.TimeFieldFormat = time.RFC3339 // "2006-01-02 15:04:05"
 	zerolog.SetGlobalLevel(getLogLevel(logLevel))
+	if logFile != nil {
+		if err := logFile.Close(); err != nil {
+			println(err)
+		}
+		logFile = nil
+	}
 	if logFileName != "" {
 		f, err := os.OpenFile(logFileName, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 		if err == nil {
@@ -42,6 +49,7 @@ func InitLogger(logLevel *string, logFileName string, logConsole bool) {
 			if logConsole {
 				wrt = io.MultiWriter(os.Stderr, f)
 			}
+			logFile = f
 			log.Logger = zerolog.New(wrt).With().Timestamp().Logger()
 			logger := zerolog.New(wrt).With().Timestamp().Logger()
 			myHttpLogger = &logger

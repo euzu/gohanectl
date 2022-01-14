@@ -49,12 +49,12 @@ func (s *SharedMemory) readSharedMem() {
 
 func (s *SharedMemory) writeSharedMem() {
 	mutex.RLock()
+	defer mutex.RUnlock()
 	if jsonString, err := json.Marshal(s.sharedMem); err == nil {
 		fileName := s.config.GetStr(config.DatabaseStatesName, config.DefDatabaseStatesName)
 		log.Debug().Msgf("Writing sharedMem to disk: %s", fileName)
 		_ = ioutil.WriteFile(fileName, jsonString, 0644)
 	}
-	mutex.RUnlock()
 }
 
 func (s *SharedMemory) GetMemory() model.Dictionary {

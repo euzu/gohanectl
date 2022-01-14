@@ -16,8 +16,8 @@ func (u *UserService) FindByUsername(userName string) (*model.User, error) {
 	return u.userRepo.FindByUsername(userName)
 }
 
-func (u *UserService) ReloadUsers() error {
-	return u.userRepo.ReloadUsers()
+func (u *UserService) Close() {
+	u.userRepo.Close()
 }
 
 func (u *UserService) SaveSettings(userName string, settings *model.UserSettings) error {

@@ -20,7 +20,6 @@ func readConfiguration(cfg config.IConfiguration, configKey config.ConfigKey, de
 	if fileName == "" {
 		return nil, errors.New("config file not configured")
 	}
-
 	newFileName := path.Join(
 		cfg.GetStr(config.ConfigDirectory, config.DefConfigDirectory),
 		fileName)
@@ -31,7 +30,7 @@ func readConfiguration(cfg config.IConfiguration, configKey config.ConfigKey, de
 	}
 
 	if cwd, err := os.Getwd(); err == nil {
-		log.Info().Msgf("reading configuration file: %s", path.Join(cwd, fileName))
+		log.Info().Msgf("Reading configuration file: %s", path.Join(cwd, fileName))
 	}
 
 	content, err := ioutil.ReadFile(fileName)

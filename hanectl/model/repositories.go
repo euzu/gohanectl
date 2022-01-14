@@ -1,19 +1,19 @@
 package model
 
 type IDeviceRepo interface {
-	ReloadDevices() error
+	Close()
 	GetDevice(deviceKey string) (*Device, error)
 	GetDevices() (*Devices, error)
 }
 
 type INotificationRepo interface {
-	ReloadNotifications() error
+	Close()
 	GetNotifications(deviceKey string, key string) ([]*Notification, error)
 	GetAllNotifications() (*Notifications, error)
 }
 
 type IUserRepo interface {
-	ReloadUsers() error
+	Close()
 	FindByUsername(userName string) (*User, error)
 	GetUsers() (*Users, error)
 }

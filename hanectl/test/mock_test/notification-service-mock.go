@@ -14,8 +14,6 @@ func (m *NotificationServiceMock) GetNotifications(deviceKey string, key string)
 	return args.Get(0).([]*model.Notification), args.Error(1)
 
 }
-func (m *NotificationServiceMock) ReloadNotifications() error {
-	args := m.Called()
-	return args.Error(0)
-
+func (m *NotificationServiceMock) Close() {
+	m.Called()
 }

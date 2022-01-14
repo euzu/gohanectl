@@ -37,7 +37,12 @@ func (m *DeviceServiceMock) GetDevicesDto(filter model.DeviceFilter) (*model.Dev
 func (m *DeviceServiceMock) DeviceUpdate(dev *model.Device, oldState string) {
 	m.Called(dev, oldState)
 }
-func (m *DeviceServiceMock) ReloadDevices() error {
-	args := m.Called()
-	return args.Error(0)
+func (m *DeviceServiceMock) Close() {
+	m.Called()
+}
+
+
+func (m *DeviceServiceMock) DeviceGroupCommand(groupKey string, params model.Dictionary) bool {
+	args := m.Called(groupKey, params)
+	return args.Bool(0)
 }

@@ -69,12 +69,12 @@ func checkDatabase(cfg config.IConfiguration, settings *model.UserSettings) {
 
 func (s *DatabaseService) writeDatabase() {
 	dbMutex.RLock()
+	defer 	dbMutex.RUnlock()
 	if jsonString, err := json.Marshal(s.settings); err == nil {
 		fileName := s.cfg.GetStr(config.DatabaseSettingsName, config.DefDatabaseSettingsName)
 		log.Debug().Msgf("Writing database to disk: %s", fileName)
 		_ = ioutil.WriteFile(fileName, jsonString, 0644)
 	}
-	dbMutex.RUnlock()
 }
 
 func (s *DatabaseService) Persist() {

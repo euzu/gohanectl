@@ -152,20 +152,15 @@ func (d *DeviceRepo) loadDevices() (*model.Devices, error) {
 	}
 
 	d.prepare(devices)
-
-	d.devicesLock.Lock()
 	d.devices = devices
-	d.devicesLock.Unlock()
 	return devices, nil
 }
 
-func (d *DeviceRepo) ReloadDevices() error {
-	if _, err := d.loadDevices(); err == nil {
-		log.Info().Msg("Devices reloaded")
-		return nil
-	} else {
-		return err
-	}
+func (d *DeviceRepo) Close() {
+	d.devicesLock.Lock()
+	defer d.devicesLock.Unlock()
+	d.devices = nil
+	log.Info().Msg("Devices cleared")
 }
 
 func (d *DeviceRepo) GetDevice(deviceKey string) (*model.Device, error) {
@@ -180,11 +175,14 @@ func (d *DeviceRepo) GetDevice(deviceKey string) (*model.Device, error) {
 }
 
 func (d *DeviceRepo) GetDevices() (*model.Devices, error) {
+	d.devicesLock.RLock()
 	if d.devices != nil {
-		d.devicesLock.RLock()
-		defer d.devicesLock.RUnlock()
+		d.devicesLock.RUnlock()
 		return d.devices, nil
 	}
+	d.devicesLock.RUnlock()
+	d.devicesLock.Lock()
+	d.devicesLock.Unlock()
 	return d.loadDevices()
 }
 

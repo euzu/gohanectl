@@ -51,11 +51,6 @@ func newJScriptVM(cfg config.IConfiguration, serviceFactory model.IServiceFactor
 	return &vm
 }
 
-func ReloadScripts() error {
-	jScriptVM.clearScriptCache()
-	return nil
-}
-
 func HandleMqttMessage(topic string, payload []byte) {
 	jScriptVM.handleMqttMessage(topic, payload)
 }
@@ -187,4 +182,9 @@ func (j *JScriptVM) compile(name string, content string) *otto.Script {
 		log.Fatal().Msgf("Could not compile script %s, %v: %s", name, err, content)
 		return nil
 	}
+}
+
+func Close() {
+	jScriptVM.clearScriptCache()
+	jScriptVM = nil
 }

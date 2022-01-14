@@ -22,19 +22,15 @@ func (n *NotificationRepo) loadNotifications() (*model.Notifications, error) {
 		log.Error().Msgf("Failed to read notifications file: %v", err)
 		return nil, errors.New("failed to read notifications file")
 	}
-	n.notificationsLock.Lock()
 	n.notifications = notifications
-	n.notificationsLock.Unlock()
 	return notifications, nil
 }
 
-func (n *NotificationRepo) ReloadNotifications() error {
-	if _, err := n.loadNotifications(); err == nil {
-		log.Info().Msg("Notifications reloaded")
-		return nil
-	} else {
-		return err
-	}
+func (n *NotificationRepo) Close() {
+	n.notificationsLock.Lock()
+	defer n.notificationsLock.Unlock()
+	n.notifications = nil
+	log.Info().Msg("Notifications cleared")
 }
 
 func (n *NotificationRepo) GetNotifications(deviceKey string, key string) ([]*model.Notification, error) {
@@ -56,11 +52,14 @@ func (n *NotificationRepo) GetNotifications(deviceKey string, key string) ([]*mo
 }
 
 func (n *NotificationRepo) GetAllNotifications() (*model.Notifications, error) {
+	n.notificationsLock.RLock()
 	if n.notifications != nil {
-		n.notificationsLock.RLock()
-		defer n.notificationsLock.RUnlock()
+		n.notificationsLock.RUnlock()
 		return n.notifications, nil
 	}
+	n.notificationsLock.RUnlock()
+	n.notificationsLock.Lock()
+	defer n.notificationsLock.Unlock()
 	return n.loadNotifications()
 }
 

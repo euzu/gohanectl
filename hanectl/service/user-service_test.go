@@ -22,16 +22,3 @@ func TestFindByUsername(t *testing.T) {
 	repoMock.AssertExpectations(t)
 }
 
-func TestReloadUsers(t *testing.T) {
-
-	repoMock := new(mock_test.UserRepoMock)
-	srv := UserService {
-		userRepo: repoMock,
-	}
-	repoMock.On("ReloadUsers").Return(nil)
-
-	err := srv.ReloadUsers()
-	assert.Nil(t, err)
-
-	repoMock.AssertExpectations(t)
-}

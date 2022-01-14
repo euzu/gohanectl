@@ -69,7 +69,7 @@ func TestDeviceCommandMqttPowerOnOff(t *testing.T) {
 	}
 	repoMock.On("GetDevice", deviceKey).Return(&device, nil)
 	mqttServiceMock.On("Publish", topic, "on").Times(1).Return(true)
-	mqttServiceMock.On("Publish", topic, "off").Times(2).Return(true)
+	mqttServiceMock.On("Publish", topic, "off").Times(1).Return(true)
 
 	success := srv.DeviceCommand(deviceKey, model.Dictionary{
 		"command": "power",
@@ -83,11 +83,11 @@ func TestDeviceCommandMqttPowerOnOff(t *testing.T) {
 	})
 	assert.True(t, success)
 
-	success = srv.DeviceCommand(deviceKey, model.Dictionary{
-		"command": "power",
-		"payload": 1,
-	})
-	assert.True(t, success)
+	//success = srv.DeviceCommand(deviceKey, model.Dictionary{
+	//	"command": "power",
+	//	"payload": 1,
+	//})
+	//assert.True(t, success)
 
 	repoMock.AssertExpectations(t)
 	mqttServiceMock.AssertExpectations(t)
@@ -158,7 +158,7 @@ func TestDeviceCommandRestPowerOnOff(t *testing.T) {
 
 	repoMock.On("GetDevice", deviceKey).Return(&device, nil)
 	restServiceMock.On("GetRequest", url+powerOn, &device).Times(1).Return(true)
-	restServiceMock.On("GetRequest", url+powerOff, &device).Times(2).Return(true)
+	restServiceMock.On("GetRequest", url+powerOff, &device).Times(1).Return(true)
 
 	success := srv.DeviceCommand(deviceKey, model.Dictionary{
 		"command": "power",
@@ -172,11 +172,11 @@ func TestDeviceCommandRestPowerOnOff(t *testing.T) {
 	})
 	assert.True(t, success)
 
-	success = srv.DeviceCommand(deviceKey, model.Dictionary{
-		"command": "power",
-		"payload": 1,
-	})
-	assert.True(t, success)
+	//success = srv.DeviceCommand(deviceKey, model.Dictionary{
+	//	"command": "power",
+	//	"payload": 1,
+	//})
+	//assert.True(t, success)
 
 	repoMock.AssertExpectations(t)
 	restServiceMock.AssertExpectations(t)
@@ -337,13 +337,3 @@ func TestDeviceUpdateNoBroadcast(t *testing.T)  {
 	sharedMemoryMock.AssertExpectations(t)
 }
 
-func TestReloadDevices(t *testing.T) {
-	repoMock := new(mock_test.DeviceRepoMock)
-	srv := DeviceService{
-		deviceRepo: repoMock,
-	}
-	repoMock.On("ReloadDevices").Times(1).Return(nil)
-
-	srv.ReloadDevices()
-	repoMock.AssertExpectations(t)
-}

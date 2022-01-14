@@ -33,13 +33,13 @@ func TestLogin(t *testing.T) {
 	pwdHash, _ := auth.HashPassword(password)
 	user := &model.User{
 		Username:    "username",
-		Password:    password,
+		Password:    pwdHash,
 		Authorities: []string{"USER"},
 		Enabled:     true,
 	}
 	authRequest := AuthRequest{
 		Username: "username",
-		Password: pwdHash,
+		Password: password,
 	}
 	payloadContent, _ := json.Marshal(authRequest)
 	payload := bytes.NewReader(payloadContent)

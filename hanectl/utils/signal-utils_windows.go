@@ -31,6 +31,7 @@ func CatchOsSignals(cleanupCallback CallbackFun, reloadCallback CallbackFun) {
 				fallthrough
 			case syscall.SIGHUP:
 				log.Debug().Msgf("received signal: %s, terminating", s)
+				close(sigs)
 				cleanupCallback()
 				os.Exit(0)
 			default:

@@ -19,16 +19,3 @@ func TestGetNotifications(t *testing.T) {
 
 	repoMock.AssertExpectations(t)
 }
-
-func TestReloadNotifications(t *testing.T) {
-	repoMock := new(mock_test.NotificationRepoMock)
-	srv := NotificationService{
-		notificationRepo: repoMock,
-	}
-	repoMock.On("ReloadNotifications").Return(nil)
-
-	err := srv.ReloadNotifications()
-	assert.Nil(t, err)
-
-	repoMock.AssertExpectations(t)
-}

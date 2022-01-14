@@ -3,7 +3,12 @@ package service
 import (
 	"gohanectl/hanectl/config"
 	"gohanectl/hanectl/model"
+	"sync/atomic"
 	"time"
+)
+
+var (
+	finalizeLocker uint32
 )
 
 type ServiceFactory struct {
@@ -55,12 +60,21 @@ func (s *ServiceFactory) GetSharedMemory() model.ISharedMemory {
 }
 
 func (s *ServiceFactory) Finalize() {
+	if !atomic.CompareAndSwapUint32(&finalizeLocker, 0, 1) {
+		return
+	}
+	defer atomic.StoreUint32(&finalizeLocker, 0)
+
 	s.sharedMemory.Persist()
 	s.databaseService.Persist()
+	s.deviceService.Close()
+	s.notificationService.Close()
+	s.userService.Close()
+	s.mqttService.Close()
 }
 
 func (s *ServiceFactory) runPersistor(cfg config.IConfiguration) {
-	if cfg.GetBool(config.DatabaseStatesPersist, config.DefDatabaseStatesPersist)  || cfg.GetBool(config.DatabaseSettingsPersist, config.DefDatabaseSettingsPersist){
+	if cfg.GetBool(config.DatabaseStatesPersist, config.DefDatabaseStatesPersist) || cfg.GetBool(config.DatabaseSettingsPersist, config.DefDatabaseSettingsPersist) {
 		ticker := time.NewTicker(15 * time.Minute)
 		quit := make(chan struct{})
 		go func() {

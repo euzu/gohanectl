@@ -24,19 +24,6 @@ func TestGetAllNotifications(t *testing.T) {
 	cfg.AssertExpectations(t)
 }
 
-func TestReloadNotifications(t *testing.T) {
-
-	cfg := new(mock_test.ConfigurationRepoMock)
-	cfg.On("GetStr", config.ConfigDirectory, config.DefConfigDirectory).Return(notificationsConfigDir)
-	cfg.On("GetStr", config.NotificationConfig, "").Return(notificationsFile)
-
-	repo := NewNotificationRepo(cfg)
-	err := repo.ReloadNotifications()
-	assert.Nil(t, err)
-
-	cfg.AssertExpectations(t)
-}
-
 func TestGetNotifications(t *testing.T) {
 
 	cfg := new(mock_test.ConfigurationRepoMock)
@@ -44,16 +31,16 @@ func TestGetNotifications(t *testing.T) {
 	cfg.On("GetStr", config.NotificationConfig, "").Return(notificationsFile)
 
 	repo := NewNotificationRepo(cfg)
-	notifications, err := repo.GetNotifications("socket-washer", "power")
+	notifications, err := repo.GetNotifications("socket-washing-mashine", "power")
 	assert.Nil(t, err)
 	assert.NotNil(t, notifications)
 	assert.True(t, len(notifications) > 0)
 
 	assert.Equal(t, notifications[0].Caption, "Waschmaschine")
-	assert.Equal(t, notifications[0].Script, "washer_power")
+	assert.Equal(t, notifications[0].Script, "washing_mashine_power")
 
 
-	notifications, err = repo.GetNotifications("socket-washer", "unknown")
+	notifications, err = repo.GetNotifications("ocket-washing-mashine", "unknown")
 	assert.Errorf(t, err, "no notification found")
 	assert.Zero(t, len(notifications))
 

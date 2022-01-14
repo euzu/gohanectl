@@ -27,6 +27,8 @@ func CatchOsSignals(cleanupCallback CallbackFun, reloadCallback CallbackFun) {
 			case syscall.SIGUSR2:
 				// kill -SIGUSR2 <pid>
 				reloadCallback()
+				signal.Stop(sigs)
+				close(sigs)
 			case syscall.SIGINT:
 				fallthrough
 			case syscall.SIGKILL:
@@ -37,6 +39,8 @@ func CatchOsSignals(cleanupCallback CallbackFun, reloadCallback CallbackFun) {
 				fallthrough
 			case syscall.SIGHUP:
 				log.Debug().Msgf("received signal: %s, terminating", s)
+				signal.Stop(sigs)
+				close(sigs)
 				cleanupCallback()
 				os.Exit(0)
 			default:
