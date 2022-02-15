@@ -4,7 +4,7 @@ The UI can be opened in desktop browser as well as on mobile.
 The backend is written in go, the ui in react.
 All settings are defined in configuration files. Actions on changes can be scripted.
 
-You need an MQTT Server like Eclipse Mosquitto.
+You need a MQTT Server like Eclipse Mosquitto.
 If you have zigbee devices you should install Zigbee2Mqtt.
 
 ## Configuration
